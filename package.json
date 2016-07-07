@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "financejs": "4.0.0"
+  },
   "keywords": [
     "finance",
     "loan",
@@ -14,5 +17,9 @@
     "mortgage"
   ],
   "author": "Eithan Shavit",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eithanshavit/amortization.git"
+  }
 }

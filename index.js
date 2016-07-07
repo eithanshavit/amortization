@@ -7,9 +7,9 @@ function ceil2dec(num) {
   return (Math.round(num * 100) / 100.0);
 }
 
-// Logic
+// Exports
 
-function amortizationSchedule(principal, years, rate) {
+exports.amortizationSchedule = function(principal, years, rate) {
   var monthlyPayment = finance.AM(principal, rate, years, 0);
   var amortizationSchedule = [];
   for (var i = 0; i < (years * 12); i++) {
@@ -22,7 +22,7 @@ function amortizationSchedule(principal, years, rate) {
       payment: monthlyPayment,
       interestPayment: interestPayment,
       principalPayment: principalPayment,
-      accInterest: ceil2dec(i == 0 ? 0 : amortizationSchedule[i-1].accInterest + interestPayment),
+      accInterest: ceil2dec((i == 0 ? 0 : amortizationSchedule[i-1].accInterest) + interestPayment),
     })
   }
   return amortizationSchedule;
