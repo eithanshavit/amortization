@@ -1,0 +1,18 @@
+{
+  "name": "amortization",
+  "version": "0.0.1",
+  "description": "Calculate a loan amortization schedule",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "finance",
+    "loan",
+    "amortization",
+    "amortize",
+    "mortgage"
+  ],
+  "author": "Eithan Shavit",
+  "license": "ISC"
+}
