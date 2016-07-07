@@ -7,7 +7,7 @@ function ceil2dec(num) {
   return (Math.round(num * 100) / 100.0);
 }
 
-// Finance
+// Logic
 
 function amortizationSchedule(principal, years, rate) {
   var monthlyPayment = finance.AM(principal, rate, years, 0);
