@@ -1,12 +1,14 @@
 {
   "name": "amortization",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Calculate a loan amortization schedule",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
+    "assert": "^1.4.1",
+    "chai": "^3.5.0",
     "financejs": "4.0.0"
   },
   "keywords": [
