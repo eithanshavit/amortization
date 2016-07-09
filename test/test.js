@@ -42,4 +42,15 @@ describe('amortizationSchedule', function() {
     });
 
   });
+
+  describe('result', function() {
+
+    it('should return an array', function() {
+      expect(fn(10000, 5, 5)).to.be.instanceof(Array);
+
+    });
+
+
+  });
+
 });
