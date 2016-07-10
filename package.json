@@ -1,6 +1,6 @@
 {
   "name": "amortization",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Calculate a loan amortization schedule",
   "main": "index.js",
   "scripts": {
