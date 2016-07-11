@@ -39,7 +39,7 @@ function floor2dec(num) {
 // Validation
 
 function assertNumber(num, message) {
-  if (!(typeof num === "number")) {
+  if (typeof num !== "number") {
     throw new TypeError(message);
   }
 }
@@ -78,11 +78,11 @@ exports.amortizationSchedule = function(principal, yearsDuration, yearlyRate) {
   var amortizationSchedule = [];
 
   for (var i = 0; i < (yearsDuration * 12); i++) {
-    var prevPrincipal = i == 0 ? principal : amortizationSchedule[i-1].principalBalance;
+    var prevPrincipal = i === 0 ? principal : amortizationSchedule[i-1].principalBalance;
     var interestPayment = prevPrincipal * monthlyRate;
     var principalPayment = monthlyPayment - interestPayment;
     var principalBalance = Math.max(prevPrincipal - principalPayment, 0);
-    var accInterest = (i == 0 ? 0 : amortizationSchedule[i-1].accInterest) + interestPayment;
+    var accInterest = (i === 0 ? 0 : amortizationSchedule[i-1].accInterest) + interestPayment;
     amortizationSchedule.push({
       paymentNumber: i+1,
       payment: monthlyPayment,
@@ -94,10 +94,10 @@ exports.amortizationSchedule = function(principal, yearsDuration, yearlyRate) {
       principalPaymentRounded: floor2dec(principalPayment),
       principalBalanceRounded: floor2dec(principalBalance),
       accInterestRounded: floor2dec(accInterest),
-    })
+    });
   }
   return amortizationSchedule;
-}
+};
 
 /**
 Generates a yearly amortization schedule with the pricipal, interest, and payment of each year of the loan.
@@ -118,18 +118,18 @@ exports.yearlyAmortizationSchedule = function(principal, yearsDuration, yearlyRa
   months.forEach(function(month) {
     var yearNumber = Math.floor((month.paymentNumber - 1)/12) + 1;
     var year = years[yearNumber] || {};
-    year["paymentNumber"] = yearNumber;
-    year["principalPayment"] = (year["principalPayment"] || 0) + month.principalPayment;
-    year["interestPayment"] = (year["interestPayment"] || 0) + month.interestPayment;
-    year["payment"] = (year["payment"] || 0) + month.payment;
-    year["principalPaymentRounded"] = floor2dec(year.principalPayment);
-    year["interestPaymentRounded"] = floor2dec(year.interestPayment);
-    year["paymentRounded"] = floor2dec(year.payment);
+    year.paymentNumber = yearNumber;
+    year.principalPayment = (year.principalPayment || 0) + month.principalPayment;
+    year.interestPayment = (year.interestPayment || 0) + month.interestPayment;
+    year.payment = (year.payment || 0) + month.payment;
+    year.principalPaymentRounded = floor2dec(year.principalPayment);
+    year.interestPaymentRounded = floor2dec(year.interestPayment);
+    year.paymentRounded = floor2dec(year.payment);
     years[yearNumber] = year;
-  })
+  });
   var ret = [];
   for (var i = 1; i <= yearsDuration; i++) {
     ret.push(years[i]);
   }
   return ret;
-}
+};
