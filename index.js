@@ -36,6 +36,10 @@ function floor2dec(num) {
   return (Math.floor(num * 100) / 100.0);
 }
 
+function round2dec(num) {
+  return (Math.floor(num * 100) / 100.0)
+}
+
 // Validation
 
 function assertNumber(num, message) {
@@ -90,10 +94,10 @@ exports.amortizationSchedule = function(principal, yearsDuration, yearlyRate) {
       interestPayment: interestPayment,
       principalPayment: principalPayment,
       accInterest: accInterest,
-      interestPaymentRounded: floor2dec(interestPayment),
-      principalPaymentRounded: floor2dec(principalPayment),
-      principalBalanceRounded: floor2dec(principalBalance),
-      accInterestRounded: floor2dec(accInterest),
+      interestPaymentRounded: round2dec(interestPayment),
+      principalPaymentRounded: round2dec(principalPayment),
+      principalBalanceRounded: round2dec(principalBalance),
+      accInterestRounded: round2dec(accInterest),
     });
   }
   return amortizationSchedule;
@@ -122,9 +126,9 @@ exports.yearlyAmortizationSchedule = function(principal, yearsDuration, yearlyRa
     year.principalPayment = (year.principalPayment || 0) + month.principalPayment;
     year.interestPayment = (year.interestPayment || 0) + month.interestPayment;
     year.payment = (year.payment || 0) + month.payment;
-    year.principalPaymentRounded = floor2dec(year.principalPayment);
-    year.interestPaymentRounded = floor2dec(year.interestPayment);
-    year.paymentRounded = floor2dec(year.payment);
+    year.principalPaymentRounded = round2dec(year.principalPayment);
+    year.interestPaymentRounded = round2dec(year.interestPayment);
+    year.paymentRounded = round2dec(year.payment);
     years[yearNumber] = year;
   });
   var ret = [];
